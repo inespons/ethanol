@@ -51,7 +51,7 @@ class Auth_Driver_Database extends Auth_Driver
 				->from(\Config::get('ethanol.activation_email_from'))
 				->to($user->email, $user->username)
 				->subject(\Config::get('ethanol.activation_email_subject'))
-				->html_body(\View::forge('ethanol/activation_email', $emailData))
+				->html_body(\Theme::instance()->view('ethanol/activation_email', $emailData))
 				->send();
 		}
 		else
