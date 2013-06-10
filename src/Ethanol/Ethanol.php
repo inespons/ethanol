@@ -498,6 +498,8 @@ class Ethanol
 	 */
 	public function get_all_permissions()
 	{
+		//Ensure the config is loaded correctly, temporay fix that needs solving
+		\Config::load('ethanol_permissions', true, true);
 		return \Config::get('ethanol_permissions');
 	}
 
