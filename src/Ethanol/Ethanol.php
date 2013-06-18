@@ -53,6 +53,7 @@ class Ethanol
 			Logger::instance()->log_log_in_attempt(Model_Log_In_Attempt::$ATTEMPT_BAD_CRIDENTIALS,
 				$email);
 			\Event::has_events('ethanol_log_in_failed') and \Event::trigger('ethanol_log_in_failed');
+			throw new LogInFailed(\Lang::get('ethanol.errors.loginInvalid'));
 		}
 		else
 		{
