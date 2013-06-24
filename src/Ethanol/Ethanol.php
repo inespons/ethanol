@@ -65,6 +65,9 @@ class Ethanol
 			\Event::has_events('ethanol_logged_in') and \Event::trigger('ethanol_logged_in',
 					$user);
 		}
+		
+		//Make sure the correct user is set for the rest of the request
+		$this->current_user = $user;
 
 		return $user;
 	}
