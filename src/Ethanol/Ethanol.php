@@ -17,10 +17,19 @@ class Ethanol
 	private $driver;
 	protected $current_user = null;
 	protected $guest_user = null;
+	
+	protected static $is_init = null;
 
 	public static function instance($driver_name = null)
 	{
-		if ( $driver_name == null ) $driver_name = \Config::get('ethanol.default_auth_driver');
+		
+		if ( ! static::$is_init)
+		{
+			Bootstrap::bootstrap();
+			static::$is_init = true;
+		}
+		
+		if ( $driver_name == null ) $driver_name = \Config::get('ethanol.default_auth_driver', 'database');
 
 		if ( !$instance = \Arr::get(static::$instances, $driver_name, false) )
 		{
@@ -32,7 +41,6 @@ class Ethanol
 
 	private function __construct($driver_name)
 	{
-		Bootstrap::bootstrap();
 		$this->driver = $driver_name;
 	}
 
