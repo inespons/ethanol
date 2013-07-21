@@ -62,7 +62,8 @@ class Auth_Driver_Database extends Auth_Driver
 
 		$user->security = $security;
 		$user->save();
-		$user->clean_security();
+		//TODO: come up with a nice way of removing this information without breaking the relationship.
+//		$user->clean_security();
 
 		return $user;
 	}
