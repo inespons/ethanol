@@ -178,9 +178,13 @@ class Ethanol
 	{
 		if ( is_null($this->guest_user) )
 		{
-			$user = new Model_User;
+			$user = new \stdClass();
 			$user->id = static::$guest_user_id;
-			$user->meta = new Model_User_Meta;
+
+			$meta = new \stdClass();
+			$user->meta = $meta;
+
+			$user->groups = array();
 
 			//Load the guest's groups
 			$groups = \Config::get('ethanol.guest.groups');
