@@ -2,6 +2,9 @@
 
 namespace Ethanol;
 
+use Ethanol\Guest_User;
+use Ethanol\Guest_User_Meta;
+
 /**
  * Defines a common interface to be able to easily access Ethanol features
  *
@@ -176,15 +179,15 @@ class Ethanol
 	 */
 	protected function construct_guest_user()
 	{
-		if ( is_null($this->guest_user) )
+		if (is_null($this->guest_user))
 		{
-			$user = new \stdClass();
+			$user = new Guest_User;
 			$user->id = static::$guest_user_id;
 
-			$meta = new \stdClass();
+			$meta = new Guest_User_Meta;
 			$user->meta = $meta;
 
-			$user->groups = array();
+			$user->groups = [];
 
 			//Load the guest's groups
 			$groups = \Config::get('ethanol.guest.groups');
