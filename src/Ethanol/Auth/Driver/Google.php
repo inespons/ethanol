@@ -41,7 +41,12 @@ class Auth_Driver_Google extends Auth_Driver
 
 	public function has_user($email)
 	{
-		
+
+	}
+
+	public function is_active($email)
+	{
+
 	}
 
 	public function validate_user($userdata)

@@ -100,7 +100,7 @@ class Auth
 
 	/**
 	 * Asks all drivers if a user exists with the given email and returns a list
-	 * of drivers that reconise the user.
+	 * of drivers that recognise the user.
 	 * 
 	 * @param type $email
 	 * @return array 
@@ -111,6 +111,27 @@ class Auth
 		foreach ($this->avaliable_drivers as $driver)
 		{
 			if ($this->get_driver($driver)->has_user($email))
+			{
+				$drivers[] = $driver;
+			}
+		}
+
+		return $drivers;
+	}
+
+	/**
+	 * Asks all drivers if a user has been activated with the given email and returns a list
+	 * of drivers that do so.
+	 *
+	 * @param type $email
+	 * @return array
+	 */
+	public function user_is_active($email)
+	{
+		$drivers = array();
+		foreach ($this->avaliable_drivers as $driver)
+		{
+			if ($this->get_driver($driver)->is_active($email))
 			{
 				$drivers[] = $driver;
 			}

@@ -34,7 +34,15 @@ abstract class Auth_Driver
 	 * @return boolean True if the user exists
 	 */
 	public abstract function has_user($email);
-	
+
+	/**
+	 * Checks if the given email address has been activated by this driver
+	 *
+	 * @param string $email The email of the user to search for
+	 * @return boolean True if the user is active
+	 */
+	public abstract function is_active($email);
+
 	/**
 	 * Attempts to validate a user's cradentials
 	 * 

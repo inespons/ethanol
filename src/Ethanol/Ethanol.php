@@ -96,15 +96,25 @@ class Ethanol
 	}
 
 	/**
-	 * Returns an array of driver names that reconise the given email address.
-	 * The array will be empty if the user is not reconised by any drivers.
+	 * Returns true if any driver recognises the given email address.
 	 *
 	 * @param string $email
-	 * @return array
+	 * @return bool
 	 */
 	public function user_exists($email)
 	{
-		return Auth::instance()->user_exists($email);
+		return (count(Auth::instance()->user_exists($email)) > 0);
+	}
+
+	/**
+	 * Returns true if any driver has this email address activated.
+	 *
+	 * @param string $email
+	 * @return bool
+	 */
+	public function user_is_active($email)
+	{
+		return (count(Auth::instance()->user_is_active($email)) > 0);
 	}
 
 	/**

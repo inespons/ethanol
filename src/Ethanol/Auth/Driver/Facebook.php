@@ -43,7 +43,12 @@ class Auth_Driver_Facebook extends Auth_Driver
 
 	public function has_user($email)
 	{
-		
+
+	}
+
+	public function is_active($email)
+	{
+
 	}
 
 	/**

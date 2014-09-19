@@ -105,6 +105,16 @@ class Auth_Driver_Database extends Auth_Driver
 		return (count($users) > 0);
 	}
 
+	public function is_active($email)
+	{
+		$user = Model_User::find_by_email($email);
+		if ($user && $user->activated) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public function validate_user($userdata)
 	{	
 		$email = \Arr::get($userdata, 'email');
